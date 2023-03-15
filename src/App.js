@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Header from "./Component/Header";
+import Nav from "./Component/Nav";
+import Home from "./Pages/Home";
+import Hollywood from "./Pages/Hollywood";
+import Bollywood from "./Pages/Bollywood";
+import Technology from "./Pages/Technology";
+import Fitness from "./Pages/Fitness";
+import Food from "./Pages/Food";
+import SingleBlogPage from "./Pages/SingleBlogPage";
+import Details from "./Pages/Details";
+import DetailPage from "./Pages/DetailPage";
+import Footer from "./Component/Footer";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Details>
+        <Header />
+        <BrowserRouter>
+          <Nav />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/bollywood" element={<Bollywood />} />
+            <Route path="/Hollywood" element={<Hollywood />} />
+            <Route path="/Technology" element={<Technology />} />
+            <Route path="/fitness" element={<Fitness />} />
+            <Route path="/food" element={<Food />} />
+            <Route path=":category/articleid" element={<SingleBlogPage />} />
+            <Route path="*" element={<DetailPage />} />
+          </Routes>
+        </BrowserRouter>
+      </Details>
+      <Footer />
     </div>
   );
 }
-
 export default App;
